@@ -7,7 +7,7 @@
           Inform the amount and type
         </p>
 
-        <form>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label>Description</label>
             <input
@@ -15,6 +15,7 @@
               class="form-control"
               placeholder="Description"
               name="description"
+              formControlName="description"
             />
           </div>
 
@@ -25,6 +26,7 @@
               class="form-control"
               placeholder="Amount"
               name="amount"
+              formControlName="amount"
             />
             <p>
               Should be a positive amount
@@ -34,24 +36,41 @@
           <div class="form-group">
             <label>Type</label>
             <br />
-            <button type="button" class="btn btn-primary btn-block">
+
+            <button
+              (click)="setExpense()"
+              *ngIf="type === 'INCOME'"
+              type="button"
+              class="btn btn-primary btn-block"
+            >
               Income
             </button>
-            <!-- <button type="button" class="btn btn-warning btn-block">Egreso</button> -->
+
+            <button
+              (click)="setIncome()"
+              *ngIf="type === 'EXPENSE'"
+              type="button"
+              class="btn btn-warning btn-block"
+            >
+              Expense
+            </button>
           </div>
 
           <hr />
-          <button type="button" class="btn btn-success mr-2">
+          <button
+            *ngIf="!isLoading"
+            type="submit"
+            class="btn btn-success mr-2"
+            [disabled]="form.invalid"
+          >
             <i class="fa fa-save"></i>
-            Add
+            Save
           </button>
 
-          <!--
-              <button disabled class="btn btn-success mr-2">
-                <i class="fa fa-spin fa-sync"></i>
-                Espere por favor...
-              </button>
-            -->
+          <button *ngIf="isLoading" disabled class="btn btn-success mr-2">
+            <i class="fa fa-spin fa-sync"></i>
+            Loading...
+          </button>
 
           <button type="reset" class="btn btn-light">Cancel</button>
         </form>
