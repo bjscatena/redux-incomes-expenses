@@ -21,6 +21,9 @@ export function authReducer(
         user: { ...action.payload.user }
       };
 
+    case fromAuth.UNSET_USER:
+      return { user: null };
+
     default:
       return state;
   }

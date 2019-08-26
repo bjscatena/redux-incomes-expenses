@@ -5,7 +5,7 @@ import { AuthService } from '../auth/auth.service';
 import { AppState } from '../app.reducer';
 import { Store } from '@ngrx/store';
 import { filter, map } from 'rxjs/operators';
-import { SetItemsAction } from './income-expense.actions';
+import { SetItemsAction, UnsetItemsAction } from './income-expense.actions';
 import { Subscription } from 'rxjs';
 
 @Injectable({
@@ -29,6 +29,8 @@ export class IncomesExpensesService {
     if (this.incExpListenerSubscription) {
       this.incExpListenerSubscription.unsubscribe();
     }
+
+    this.store.dispatch(new UnsetItemsAction());
   }
 
   initIncomesExpensesListener(): void {
@@ -52,7 +54,7 @@ export class IncomesExpensesService {
           });
         })
       )
-      .subscribe((incExpArray: IncomeExpense[]) => {
+      .subscribe((incExpArray: any[]) => {
         this.store.dispatch(new SetItemsAction({ items: incExpArray }));
       });
   }
