@@ -23,6 +23,7 @@ import { StatisticsComponent } from './incomes-expenses/statistics/statistics.co
 import { DetailComponent } from './incomes-expenses/detail/detail.component';
 
 import { environment } from '../environments/environment';
+import { OrderIncExpPipe } from './incomes-expenses/order-inc-exp.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { environment } from '../environments/environment';
     DetailComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    OrderIncExpPipe
   ],
   imports: [
     BrowserModule,

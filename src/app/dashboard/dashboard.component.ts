@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IncomesExpensesService } from '../incomes-expenses/incomes-expenses.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  constructor(private incExpService: IncomesExpensesService) {}
 
   ngOnInit() {
+    this.incExpService.initIncomesExpensesListener();
   }
-
 }
