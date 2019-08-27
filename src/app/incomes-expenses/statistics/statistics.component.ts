@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import { Subscription } from 'rxjs';
 import { IncomeExpense } from '../income-expense.model';
 import { Label } from 'ng2-charts';
+import { AppState } from '../income-expense.reducer';
 
 @Component({
   selector: 'app-statistics',

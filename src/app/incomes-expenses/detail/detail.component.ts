@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import { IncomeExpense } from '../income-expense.model';
 import { Subscription } from 'rxjs';
 import { IncomesExpensesService } from '../incomes-expenses.service';
 
 import Swal from 'sweetalert2';
+import { AppState } from '../income-expense.reducer';
 
 @Component({
   selector: 'app-detail',

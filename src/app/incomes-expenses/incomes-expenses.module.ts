@@ -8,6 +8,9 @@ import { OrderIncExpPipe } from './order-inc-exp.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { SharedModule } from '../shared/shared.module';
+import { DashboardRoutingModule } from '../dashboard/dashboard-routing.module';
+import { StoreModule } from '@ngrx/store';
+import { incomeExpenseReducer } from './income-expense.reducer';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
-    SharedModule
+    SharedModule,
+    DashboardRoutingModule,
+    StoreModule.forFeature('incomeExpense', incomeExpenseReducer)
   ]
 })
 export class IncomesExpensesModule {}
